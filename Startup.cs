@@ -33,6 +33,13 @@ namespace hellodotnetcore
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync("Hello World!");
+
+                    Console.WriteLine("in startup main");
+                    var userId = Environment.GetEnvironmentVariable("HTTP_X_MS_CLIENT_PRINCIPAL_ID");
+                    Console.WriteLine("user id env variable: " + userId);
+
+                    // userId = httpRequest.Headers["X-MS-CLIENT-PRINCIPAL-ID"].ToString();
+                    // Console.WriteLine("user id request header: " + userId);
                 });
             });
         }
