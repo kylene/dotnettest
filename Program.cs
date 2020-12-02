@@ -14,6 +14,13 @@ namespace hellodotnetcore
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+
+            Console.WriteLine("in startup main");
+            var userId = Environment.GetEnvironmentVariable("HTTP_X_MS_CLIENT_PRINCIPAL_ID");
+            Console.WriteLine("user id env variable: " + userId);
+
+            // userId = httpRequest.Headers["X-MS-CLIENT-PRINCIPAL-ID"].ToString();
+            // Console.WriteLine("user id request header: " + userId);
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
